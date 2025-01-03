@@ -70,6 +70,7 @@ Set-ExecutionPolicy Bypass -Scope Process; iwr https://raw.githubusercontent.com
 
 Note: 
 - Make sure to prepare your `.env` file before running the script
+- The script will automatically request administrative privileges if needed
 - The `Set-ExecutionPolicy` command temporarily allows script execution for the current PowerShell session only
 - Replace `C:\path\to\your\.env` with the actual path to your `.env` file
 

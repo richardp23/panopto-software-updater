@@ -1,0 +1,50 @@
+# Environment configuration
+.env
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Logs
+*.log
+PanoptoUpdate_*.log
+
+# PowerShell
+*.ps1xml
+*.psm1
+*.psd1
+*.ps1.test
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Temp directories
+temp/
+tmp/
+
+# IDE specific files
+.vscode/
+.idea/
+*.suo
+*.user
+*.sln.docstates
+
+# Debug files
+*.debug
+*.dbg 

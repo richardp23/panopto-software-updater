@@ -68,15 +68,6 @@ Set-ExecutionPolicy Bypass -Scope Process; iwr https://raw.githubusercontent.com
 Set-ExecutionPolicy Bypass -Scope Process; $script = (iwr https://raw.githubusercontent.com/richardp23/panopto-software-updater/main/Update-PanoptoSoftware.ps1).Content; Invoke-Expression "$script; Update-PanoptoSoftware -EnvFile 'C:\path\to\your\.env'"
 ```
 
-Alternative longer syntax:
-```powershell
-# Basic usage
-Set-ExecutionPolicy Bypass -Scope Process; Invoke-Expression (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/richardp23/panopto-software-updater/main/Update-PanoptoSoftware.ps1')
-
-# With custom .env location
-Set-ExecutionPolicy Bypass -Scope Process; $script = (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/richardp23/panopto-software-updater/main/Update-PanoptoSoftware.ps1'); Invoke-Expression "$script; Update-PanoptoSoftware -EnvFile 'C:\path\to\your\.env'"
-```
-
 Note: Make sure to prepare your `.env` file before running the script. The `Set-ExecutionPolicy` command temporarily allows script execution for the current PowerShell session only.
 
 ## Output

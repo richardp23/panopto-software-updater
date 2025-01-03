@@ -1,15 +1,10 @@
-# Self-elevation mechanism
-if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] 'Administrator')) {
-    Write-Host "Script requires elevation. Attempting to restart with administrative privileges..." -ForegroundColor Yellow
-    $arguments = "-NoProfile -ExecutionPolicy Bypass -File `"$($MyInvocation.MyCommand.Path)`""
-    if ($EnvFile) {
-        $arguments += " -EnvFile `"$EnvFile`""
-    }
-    Start-Process powershell -Verb RunAs -ArgumentList $arguments
-    exit
-}
-
 #Requires -Version 5.1
+
+[CmdletBinding()]
+param(
+    [Parameter(Mandatory=$false)]
+    [string]$EnvFile = (Join-Path $PSScriptRoot ".env")
+)
 
 <#
 .SYNOPSIS
@@ -27,12 +22,16 @@ if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
                     of Panopto Recorder and Remote Recorder software
 #>
 
-# Script parameters
-[CmdletBinding()]
-param(
-    [Parameter(Mandatory=$false)]
-    [string]$EnvFile = (Join-Path $PSScriptRoot ".env")
-)
+# Self-elevation mechanism
+if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] 'Administrator')) {
+    Write-Host "Script requires elevation. Attempting to restart with administrative privileges..." -ForegroundColor Yellow
+    $arguments = "-NoProfile -ExecutionPolicy Bypass -File `"$($MyInvocation.MyCommand.Path)`""
+    if ($EnvFile) {
+        $arguments += " -EnvFile `"$EnvFile`""
+    }
+    Start-Process powershell -Verb RunAs -ArgumentList $arguments
+    exit
+}
 
 # Set strict mode and error action
 Set-StrictMode -Version Latest

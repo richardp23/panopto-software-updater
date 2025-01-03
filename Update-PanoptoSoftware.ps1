@@ -23,7 +23,7 @@ param(
 # Self-elevation mechanism
 if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] 'Administrator')) {
     Write-Host "Script requires elevation. Attempting to restart with administrative privileges..." -ForegroundColor Yellow
-    $arguments = "-NoProfile -ExecutionPolicy Bypass -File `"$($MyInvocation.MyCommand.Path)`""
+    $arguments = "-NoExit -NoProfile -ExecutionPolicy Bypass -File `"$($MyInvocation.MyCommand.Path)`""
     if ($EnvFile) {
         $arguments += " -EnvFile `"$EnvFile`""
     }

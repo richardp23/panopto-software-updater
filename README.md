@@ -60,15 +60,18 @@ You can run the script directly from GitHub without downloading it first. The co
 
 1. Basic usage (using default .env location):
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process; iwr https://raw.githubusercontent.com/richardp23/panopto-software-updater/main/Update-PanoptoSoftware.ps1 | iex
+Set-ExecutionPolicy Bypass -Scope Process; iwr https://raw.githubusercontent.com/richardp23/panopto-software-updater/main/Update-PanoptoSoftware.ps1 -OutFile "$env:TEMP\Update-PanoptoSoftware.ps1"; & "$env:TEMP\Update-PanoptoSoftware.ps1"
 ```
 
 2. Specifying a custom .env file location:
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process; $script = (iwr https://raw.githubusercontent.com/richardp23/panopto-software-updater/main/Update-PanoptoSoftware.ps1).Content; Invoke-Expression "$script; Update-PanoptoSoftware -EnvFile 'C:\path\to\your\.env'"
+Set-ExecutionPolicy Bypass -Scope Process; iwr https://raw.githubusercontent.com/richardp23/panopto-software-updater/main/Update-PanoptoSoftware.ps1 -OutFile "$env:TEMP\Update-PanoptoSoftware.ps1"; & "$env:TEMP\Update-PanoptoSoftware.ps1" -EnvFile 'C:\path\to\your\.env'
 ```
 
-Note: Make sure to prepare your `.env` file before running the script. The `Set-ExecutionPolicy` command temporarily allows script execution for the current PowerShell session only.
+Note: 
+- Make sure to prepare your `.env` file before running the script
+- The `Set-ExecutionPolicy` command temporarily allows script execution for the current PowerShell session only
+- Replace `C:\path\to\your\.env` with the actual path to your `.env` file
 
 ## Output
 

@@ -1,8 +1,6 @@
 #Requires -Version 5.1
 
-[CmdletBinding()]
 param(
-    [Parameter(Mandatory=$false)]
     [string]$EnvFile = (Join-Path $PSScriptRoot ".env")
 )
 

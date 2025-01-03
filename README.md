@@ -48,11 +48,36 @@ To update the configuration:
 
 ## Usage
 
+### Local Execution
 Run the script with administrative privileges after updating the `.env` file with current version information:
 
 ```powershell
 .\Update-PanoptoSoftware.ps1
 ```
+
+### Run Directly from GitHub
+You can run the script directly from GitHub without downloading it first. The commands below include setting the execution policy for the current PowerShell session:
+
+1. Basic usage (using default .env location):
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process; iwr https://raw.githubusercontent.com/richardp23/panopto-software-updater/main/Update-PanoptoSoftware.ps1 | iex
+```
+
+2. Specifying a custom .env file location:
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process; $script = (iwr https://raw.githubusercontent.com/richardp23/panopto-software-updater/main/Update-PanoptoSoftware.ps1).Content; Invoke-Expression "$script; Update-PanoptoSoftware -EnvFile 'C:\path\to\your\.env'"
+```
+
+Alternative longer syntax:
+```powershell
+# Basic usage
+Set-ExecutionPolicy Bypass -Scope Process; Invoke-Expression (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/richardp23/panopto-software-updater/main/Update-PanoptoSoftware.ps1')
+
+# With custom .env location
+Set-ExecutionPolicy Bypass -Scope Process; $script = (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/richardp23/panopto-software-updater/main/Update-PanoptoSoftware.ps1'); Invoke-Expression "$script; Update-PanoptoSoftware -EnvFile 'C:\path\to\your\.env'"
+```
+
+Note: Make sure to prepare your `.env` file before running the script. The `Set-ExecutionPolicy` command temporarily allows script execution for the current PowerShell session only.
 
 ## Output
 

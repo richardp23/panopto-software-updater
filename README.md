@@ -25,7 +25,7 @@ A PowerShell utility that checks and updates Panopto software installations acro
 The script uses a `.env` file for configuration. **Important**: Panopto administrators must manually update this file with the current version numbers and download URLs available from their Panopto server:
 
 ```ini
-# Required versions - Update these with current version numbers from Panopto
+# Required versions - These are the versions you want to check against
 RECORDER_VERSION=12.0.4.00087
 REMOTE_RECORDER_VERSION=12.0.4.00087
 
@@ -33,16 +33,18 @@ REMOTE_RECORDER_VERSION=12.0.4.00087
 RECORDER_PATH=C:\Program Files\Panopto\Recorder\Recorder.exe
 REMOTE_RECORDER_PATH=C:\Program Files\Panopto\Remote Recorder\RemoteRecorder.exe
 
-# Download URLs - Update these with current download URLs from Panopto
-RECORDER_URL=https://your-panopto-server/download/recorder
-REMOTE_RECORDER_URL=https://your-panopto-server/download/remote-recorder
+# Download URLs - Get these exact URLs from your Panopto server
+# Note: The numbers in the URLs are not related to the version numbers above
+RECORDER_URL=https://your-panopto-server.com/Panopto/Cache/12345/Software/PanoptoRecorder.exe
+REMOTE_RECORDER_URL=https://your-panopto-server.com/Panopto/Cache/12345/Software/PanoptoRemoteRecorder.exe
 ```
 
 To update the configuration:
 1. Log into your Panopto server's admin interface
-2. Locate the current version numbers and download URLs for both applications
-3. Update the `.env` file with these values
-4. Run the script to apply updates
+2. Locate the current version numbers for both applications
+3. Get the exact download URLs for both installers (note that URL paths may not match version numbers)
+4. Update the `.env` file with these values
+5. Run the script to apply updates
 
 ## Usage
 
